@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/login.png" type="image/x-icon">
+  <title>Signup - Zaman Medical Store</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1A2A80, #3B38A0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .auth-card {
+      background-color: #fff;
+      padding: 40px 35px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 1s ease 0.4s forwards;
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .auth-card h2 {
+      margin-bottom: 25px;
+      color: #1A2A80;
+      font-size: 26px;
+      text-shadow: 0 0 10px #FFD166 , 0 0 10px #FFD166;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #3B38A0;
+    }
+
+    button[type="submit"] {
+      background-color: #3B38A0;
+      color: #fff;
+      padding: 14px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px #FFD166;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #1A2A80;
+      box-shadow: 0 0 25px #3933f0, 0 0 25px #3933f0;
+      font-size: large;
+    }
+
+    .auth-link {
+      margin-top: 18px;
+      font-size: 14px;
+    }
+
+    .auth-link a {
+      color: #1A2A80;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-card">
+    <h2>Create Your Account</h2>
+    <form id="signupForm">
+      <div class="form-group">
+        <input type="text" id="username" placeholder="Username" required />
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Email Address" required />
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" placeholder="Password" required />
+      </div>
+      <div class="form-group">
+        <input type="password" id="confirm-password" placeholder="Confirm Password" required />
+      </div>
+      <button type="submit">Signup</button>
+    </form>
+    <p class="auth-link">Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmPassword = document.getElementById("confirm-password").value.trim();
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      const isEmailTaken = users.some(user => user.email === email);
+      if (isEmailTaken) {
+        alert("Email already registered. Please use a different one.");
+        return;
+      }
+
+      const user = {
+        username,
+        email,
+        password
+      };
+
+      users.push(user);
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("Signup successful!");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+
+</html>

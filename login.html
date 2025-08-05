@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/login.png" type="image/x-icon">
+  <title>Login - Zaman Medical Store</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #1A2A80, #3B38A0);
+      font-family:  sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .auth-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: slideUp 1s ease 0.4s forwards;
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .auth-container h2 {
+      color: #1A2A80;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #FFD166 , 0 0 10px #FFD166;
+      font-weight: 600;
+    }
+
+    .auth-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .auth-container button {
+      background-color: #3B38A0;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px #FFD166;
+    }
+
+    .auth-container button:hover {
+      background-color: #1A2A80;
+      box-shadow: 0 0 25px #3933f0;
+      font-size: large;
+    }
+
+    .auth-container a {
+      color: #1A2A80;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #loginError {
+      color: red;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="email" id="login-email" placeholder="Email Address" required />
+      <input type="password" id="login-password" placeholder="Password" required />
+      <button type="submit">Login</button>
+      <p id="loginError"></p>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Signup here</a></p>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const enteredEmail = document.getElementById("login-email").value;
+      const enteredPassword = document.getElementById("login-password").value;
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      const matchedUser = users.find(
+        user => user.email === enteredEmail && user.password === enteredPassword
+      );
+
+      if (matchedUser) {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("currentUser", JSON.stringify(matchedUser));
+        window.location.href = "index.html";
+      } else {
+        document.getElementById("loginError").textContent = "Invalid email or password.";
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+    <title>About Us - Zaman Medical Store</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #F7F9FC;
+            color: #1a1a1a;
+            opacity: 0;
+            animation: fadeInBody 1.2s ease forwards;
+        }
+
+        @keyframes fadeInBody {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1A2A80;
+            padding: 15px 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 0 8px #1bf7ff, 0 0 8px #1bf7ff;
+        }
+
+        header ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        header ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            text-shadow: 0 0 15px #FFD166, 0 0 30px #FFD166;
+            font-size: 15px;
+        }
+
+        header ul li a:hover {
+            box-shadow: 0 0 15px #1bf7ff, 0 0 30px #1bf7ff;
+            font-size: large;
+        }
+
+        /* About Us Page */
+        h1 {
+            text-align: center;
+            margin-top: 15px;
+            color: #1A2A80;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #FFD166, 0 0 10px #FFD166;
+            opacity: 0;
+            animation: slideDown 1s ease 0.3s forwards;
+        }
+
+        .about-section {
+            padding: 60px 30px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: slideUp 1s ease forwards;
+        }
+
+        .about-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease-in-out;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 1.2s ease 0.3s forwards;
+        }
+
+        .about-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Mission Box */
+        .mission-box {
+            background-color: #f7f9fc;
+            padding: 30px;
+            border-left: 5px solid #1A2A80;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            animation: fadeInBody 1s ease 0.6s forwards;
+        }
+
+        .mission-box h4 {
+            color: #1A2A80;
+            font-size: 2.0rem;
+            text-shadow: 0 0 10px #FFD166, 0 0 10px #FFD166;
+        }
+
+        /* Button Style */
+        .glow-btn {
+            background-color: #3933f0;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 30px;
+            box-shadow: 0 0 20px #FFD166, 0 0 20px #FFD166;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .glow-btn:hover {
+            background-color: #1A2A80;
+            color: white;
+            box-shadow: 0 0 25px #3933f0, 0 0 25px #3933f0;
+            transform: scale(1.05);
+            font-size: large;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #1A2A80;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Zaman Medical Store</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about us.html">About us</a></li>
+            <li><a href="add medicine.html">Add Medicine</a></li>
+            <li><a href="medicine list.html">Medicine list</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Singup</a></li>
+        </ul>
+    </header>
+
+    <!-- main  -->
+    <main>
+        <h1>About Zaman Medical Store</h1>
+
+        <div class="about-section container">
+
+            <div class="row align-items-center mb-4">
+                <div class="col-md-6">
+                    <p><b>
+                            Zaman Medical Store is a trusted name in the pakistan of healthcare. We are committed to
+                            delivering genuine and high-quality medicines, healthcare products, and expert consultation
+                            to our valued customers. With years of experience and a team of professionals, we serve our
+                            community with compassion and integrity.
+                        </b></p>
+                </div>
+                <div class="col-md-6">
+                    <img src="assets/pharmacy store.png" alt="Pharmacy Store" class="about-img">
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2">
+                    <p><b>
+                            We offer a wide range of services under one roof including over-the-counter medicines,
+                            personal care items, free consultation, and fast home delivery. Your health is our top
+                            priority, and we strive to make healthcare more accessible, affordable, and trustworthy.
+                        </b></p>
+                </div>
+                <div class="col-md-6 order-md-1">
+                    <img src="assets/our team.png" alt="Our Team" class="about-img">
+                </div>
+            </div>
+
+            <div class="mission-box mt-5">
+                <h4>Our Mission</h4>
+                <p><b>
+                        Our mission is to bridge the gap between healthcare services and the people. We believe that
+                        everyone deserves access to safe, affordable, and authentic medicines — and we strive to make
+                        that a reality every single day.
+                    </b></p>
+            </div>
+
+            <div class="text-center">
+                <button class="glow-btn" onclick="goHome()">Back to Home</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer  -->
+    <footer>
+        &copy; 2025 Zaman Medical Store | All rights reserved
+    </footer>
+
+    <!-- script  -->
+    <script>
+        function goHome() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+
+</html>
